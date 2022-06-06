@@ -8,19 +8,18 @@ export function consultarTabela(){
     SELECT * FROM TB_PETSS; 
     `
 
-    const [linhas] = con.query(comando)
+    const linhas = con.query(comando)
     return linhas;
 }
 
 
-export async function inserirTabela(pet){
+export function inserirTabela(pet){
     const comando = `
     INSERT INTO TB_PETSS(nm_pet)
     VALUES( ? )
     `
-    const [reposta] = await con.query (comando, [pet.nome])
-    const c = [reposta];
-    return c;
+    const [reposta] = con.query (comando, [pet.nome])
+    return reposta;
 }
 
 export default server

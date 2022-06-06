@@ -3,15 +3,16 @@ import { consultarTabela, inserirTabela } from "../repository/petRepository.js";
 
 const server = Router();
 
-server.get('/pets/Consultar', async (req, resp) => {
+server.get('/pets/consultar', (req, resp) => {
     try{
-        const funcao = await consultarTabela();
+        const funcao = consultarTabela();
 
         resp.send(funcao)
+        
     }catch(err){
 
         resp.status(401).send({
-            erro:err.message
+            erro: err.message
 
         })
     } 
@@ -19,11 +20,11 @@ server.get('/pets/Consultar', async (req, resp) => {
 })
 
 
-server.post('/pets', async (req, resp) => {
+server.post('/pets', (req, resp) => {
     try{
         const { nome } = req.body;
 
-        const funcao = await inserirTabela(nome);
+        const funcao = inserirTabela(nome);
 
         resp.send(funcao)
     }catch(err){

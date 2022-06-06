@@ -8,7 +8,7 @@ import repository from './repository/petRepository.js'
 
 const server = express();
 server.use(cors());
-server.use(express.json);
+server.use(express.json());
 
 //endpoints
 server.use(controlador);
