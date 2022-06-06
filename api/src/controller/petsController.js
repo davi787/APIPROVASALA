@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { consultarTabela } from "../repository/petRepository.js";
+import { consultarTabela, inserirTabela } from "../repository/petRepository.js";
 
 const server = Router();
 
-server.get('/pets', async (req, resp) => {
+server.get('/pets/Consultar', async (req, resp) => {
     try{
         const funcao = await consultarTabela();
 
@@ -23,7 +23,7 @@ server.post('/pets', async (req, resp) => {
     try{
         const { nome } = req.body;
 
-        const funcao = await consultarTabela(nome);
+        const funcao = await inserirTabela(nome);
 
         resp.send(funcao)
     }catch(err){
