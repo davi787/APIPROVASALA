@@ -3,22 +3,22 @@ import { Router } from 'express'
 
 const server = Router();
 
-export function consultarTabela(){
+export async function consultarTabela(){
     const comando = `
     SELECT * FROM TB_PETSS; 
     `
 
-    const linhas = con.query(comando)
+    const [linhas] = await con.query(comando)
     return linhas;
 }
 
 
-export function inserirTabela(pet){
+export async function inserirTabela(pet){
     const comando = `
     INSERT INTO TB_PETSS(nm_pet)
     VALUES( ? )
     `
-    const [reposta] = con.query (comando, [pet.nome])
+    const [reposta] = await con.query(comando, [pet.nome])
     return reposta;
 }
 
