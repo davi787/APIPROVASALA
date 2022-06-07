@@ -1,13 +1,13 @@
-import { Router } from "express";
+import { Router } from 'express';
 import { consultarTabela, inserirTabela } from "../repository/petRepository.js";
 
 const server = Router();
 
-server.get('/pets/consultar', (req, resp) => {
+server.get('/pets/consultar', async (req, resp) => {
     try{
-        const funcao = consultarTabela();
+        const a = await consultarTabela();
 
-        resp.send(funcao)
+        resp.send(a)
         
     }catch(err){
 
@@ -20,11 +20,11 @@ server.get('/pets/consultar', (req, resp) => {
 })
 
 
-server.post('/pets', (req, resp) => {
+server.post('/pets', async (req, resp) => {
     try{
-        const { nome } = req.body;
+        const nomeee = req.body;
 
-        const funcao = inserirTabela(nome);
+        const funcao = await inserirTabela(nomeee);
 
         resp.send(funcao)
     }catch(err){
