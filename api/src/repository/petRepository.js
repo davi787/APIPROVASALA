@@ -3,7 +3,7 @@ import { con } from './connection.js';
 export async function consultarTabela(){
     const comando = `
     select
-    nm_pet
+    nm_pet nome
     from tb_petss
     `
 
